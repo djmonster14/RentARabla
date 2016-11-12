@@ -1,4 +1,5 @@
 ﻿using RentARabla.Contexts;
+using RentARabla.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,22 @@ namespace RentARabla.Controllers
         // GET: Rentals
         public ActionResult Index()
         {
-            return View(db.Rentals);
+            var result = (from rental in db.Rentals
+                          join car in db.Cars on rental.Car.Id equals car.Id
+                          where rental.RentDate <= DateTime.Now && rental.ReturnDate > DateTime.Now
+                          select new RentalsSearch
+                          {
+                              Id = rental.Id,
+                              RentDate = rental.RentDate,
+                              ReturnDate = rental.ReturnDate,
+                              PricePerDay = car.PricePerDay,
+                              ManufactureDate = car.ManufactureDate,
+                              FuelType = car.FuelType,
+                              Type = car.Type,
+                              Brand = car.Brand,
+                              Model = car.Model
+                          });
+            return View(result.ToList());
         }
 
         // GET: Rentals/Details/5
