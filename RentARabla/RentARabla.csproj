@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201611121135316_Added_Adm.Designer.cs">
       <DependentUpon>201611121135316_Added_Adm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611121838429_Added_Clients_Cars.cs" />
+    <Compile Include="Migrations\201611121838429_Added_Clients_Cars.Designer.cs">
+      <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Address.cs" />
@@ -238,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611121135316_Added_Adm.resx">
       <DependentUpon>201611121135316_Added_Adm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611121838429_Added_Clients_Cars.resx">
+      <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

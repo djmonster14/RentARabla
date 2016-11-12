@@ -104,17 +104,18 @@ namespace RentARabla.Migrations
 
         private void SeedClients(Contexts.RentARablaDBContext context)
         {
-            var client = context.Administrators.FirstOrDefault();
-            if (client != null)
+            var nr = context.Administrators.Count();
+            if (nr > 2)
                 return;
 
             var address1 = new Address
-            {
+            {   Id = 1,
                 Street = "Mihai Viteazul",
                 StreetNumber = 4,
                 City = "Cluj-Napoca",
                 Country = "Romania"
             };
+            context.Addresses.Add(address1);
 
             var person1 = new Person
             {
@@ -125,6 +126,7 @@ namespace RentARabla.Migrations
                 Email = "mserafim@yahoo.com",
                 Phone = "0744012012"
             };
+            context.Persons.Add(person1);
 
             context.Clients.Add(
                 new Client
@@ -144,6 +146,7 @@ namespace RentARabla.Migrations
                 Email = "sdecebal@yahoo.com",
                 Phone = "0743123123"
             };
+            context.Persons.Add(person2);
 
             context.Clients.Add(
                 new Client
@@ -154,7 +157,7 @@ namespace RentARabla.Migrations
                     Address = address1
                 });
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
 
     }
