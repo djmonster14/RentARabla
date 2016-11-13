@@ -29,5 +29,6 @@ namespace RentARabla.Contexts
 
         public System.Data.Entity.DbSet<RentARabla.Models.Client> Clients { get; set; }
         public System.Data.Entity.DbSet<RentARabla.Models.Administrator> Administrators { get; set; }
+
     }
 }

@@ -159,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\RentalsSearch.cs" />
     <Compile Include="Migrations\201611021730263_Initialize-with-inheritance.cs" />
     <Compile Include="Migrations\201611021730263_Initialize-with-inheritance.Designer.cs">
       <DependentUpon>201611021730263_Initialize-with-inheritance.cs</DependentUpon>
@@ -178,6 +179,10 @@
     <Compile Include="Migrations\201611121135316_Added_Adm.cs" />
     <Compile Include="Migrations\201611121135316_Added_Adm.Designer.cs">
       <DependentUpon>201611121135316_Added_Adm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611121838429_Added_Clients_Cars.cs" />
+    <Compile Include="Migrations\201611121838429_Added_Clients_Cars.Designer.cs">
+      <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -204,13 +209,13 @@
     <Content Include="Views\Cars\Create.cshtml" />
     <Content Include="Views\Cars\Edit.cshtml" />
     <Content Include="Views\Cars\Delete.cshtml" />
-    <Content Include="Views\Rentals\Index.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\Create.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Rentals\Login.cshtml" />
     <Content Include="Views\Rentals\Authenticate.cshtml" />
+    <Content Include="Views\Rentals\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -237,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611121135316_Added_Adm.resx">
       <DependentUpon>201611121135316_Added_Adm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611121838429_Added_Clients_Cars.resx">
+      <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
