@@ -111,14 +111,21 @@ namespace RentARabla.Controllers
         }
 
         //TODO: SET: Login()
-        //[HttpPost]
-        //public ActionResult Login(string userName, string password)
-        //{
-        //    var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
-        //    if (user.Count == 0)
-        //        return Json("string"); 
-        //    return RedirectToAction("Authenticate");
-        //}
+        [HttpPost]
+        public ActionResult Login(string userName, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
+                if (user.Count != 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                    ModelState.AddModelError("", "Incorrect username or password");
+            }
+            return View();
+        }
 
         // GET: Rentals/Authenticate/
         public ActionResult Authenticate()
