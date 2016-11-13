@@ -39,6 +39,8 @@
             </div>
         </div>
 
+        @*<p id="demo" style="color:red;">Incorrect email or password</p>*@
+
         <div class="col-md-offset-2">
             @Html.ActionLink("Don't have an account? Authenticate here!", "Authenticate")
         </div>
@@ -49,3 +51,14 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/scripts/myJavaScript.js"></script>
+
+@*<script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "gethint.asp?q=" + str, true);
+        xmlhttp.send();
+    </script>*@

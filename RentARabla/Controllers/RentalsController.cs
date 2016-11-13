@@ -95,7 +95,14 @@ namespace RentARabla.Controllers
         }
 
         //TODO: SET: Login()
-
+        //[HttpPost]
+        //public ActionResult Login(string userName, string password)
+        //{
+        //    var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
+        //    if (user.Count == 0)
+        //        return Json("string"); 
+        //    return RedirectToAction("Authenticate");
+        //}
 
         // GET: Rentals/Authenticate/
         public ActionResult Authenticate()
