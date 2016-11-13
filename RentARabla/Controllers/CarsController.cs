@@ -39,7 +39,6 @@ namespace RentARabla.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
                     db.Cars.Add(car);

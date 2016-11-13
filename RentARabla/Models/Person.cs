@@ -12,10 +12,8 @@ namespace RentARabla.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
         public string UserName { get; set; }
 

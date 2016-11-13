@@ -1,5 +1,6 @@
 ﻿using RentARabla.Contexts;
 using RentARabla.Helpers;
+using RentARabla.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -134,5 +135,23 @@ namespace RentARabla.Controllers
         }
 
         //TODO: SET: Authenticate()
+        [HttpPost]
+        public ActionResult Authenticate(Client model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Clients.Add(model);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201611121838429_Added_Clients_Cars.Designer.cs">
       <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611131658140_Modified_Client.cs" />
+    <Compile Include="Migrations\201611131658140_Modified_Client.Designer.cs">
+      <DependentUpon>201611131658140_Modified_Client.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Address.cs" />
@@ -245,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611121838429_Added_Clients_Cars.resx">
       <DependentUpon>201611121838429_Added_Clients_Cars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611131658140_Modified_Client.resx">
+      <DependentUpon>201611131658140_Modified_Client.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

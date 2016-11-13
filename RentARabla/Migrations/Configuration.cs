@@ -11,14 +11,14 @@ namespace RentARabla.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Contexts.RentARablaDBContext context)
         {
             SeedAdmin(context);
             SeedCars(context);
-            SeedClients(context);
+            //SeedClients(context);
         }
 
         private void SeedAdmin(Contexts.RentARablaDBContext context)
@@ -133,7 +133,6 @@ namespace RentARabla.Migrations
                 {
                     Age = 43,
                     NationalId = "1881101234432",
-                    Person = person1,
                     Address = address1
                 });
 
@@ -153,7 +152,6 @@ namespace RentARabla.Migrations
                 {
                     Age = 47,
                     NationalId = "2841101342433",
-                    Person = person2,
                     Address = address1
                 });
 
