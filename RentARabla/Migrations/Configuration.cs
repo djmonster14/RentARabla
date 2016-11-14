@@ -3,7 +3,6 @@ namespace RentARabla.Migrations
     using Enums;
     using Models;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -18,7 +17,7 @@ namespace RentARabla.Migrations
         {
             SeedAdmin(context);
             SeedCars(context);
-            //SeedClients(context);
+            SeedClients(context);
         }
 
         private void SeedAdmin(Contexts.RentARablaDBContext context)
@@ -27,24 +26,21 @@ namespace RentARabla.Migrations
             if (admin != null)
                 return;
 
-            var person = new Person
-            {
-                FirstName = "Admin",
-                LastName = "Admin",
-                UserName = "admin",
-                Password = "admin",
-                Email = "admin@mail.com",
-                Phone = "0721341290"
-            };
-
             context.Administrators.Add(
                 new Administrator
                 {
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    UserName = "admin",
+                    Password = "admin",
+                    Email = "admin@mail.com",
+                    Phone = "0721341290",
                     Role = Role.Admin,
-                    Person = person
                 });
         }
-        private void SeedCars(Contexts.RentARablaDBContext context) {
+
+        private void SeedCars(Contexts.RentARablaDBContext context)
+        {
             var car = context.Cars.FirstOrDefault();
             if (car != null)
                 return;
@@ -87,7 +83,6 @@ namespace RentARabla.Migrations
             };
             var car3 = new Car
             {
-
                 PricePerDay = price3,
                 ManufactureDate = Convert.ToDateTime("05/08/2012"),
                 FuelType = FuelType.Petrol,
@@ -99,63 +94,33 @@ namespace RentARabla.Migrations
             context.Cars.Add(car1);
             context.Cars.Add(car2);
             context.Cars.Add(car3);
-            //context.SaveChanges();
         }
 
         private void SeedClients(Contexts.RentARablaDBContext context)
         {
-            var nr = context.Administrators.Count();
-            if (nr > 2)
+            var clients = context.Clients.FirstOrDefault();
+            if (clients != null)
                 return;
 
-            var address1 = new Address
-            {   Id = 1,
-                Street = "Mihai Viteazul",
-                StreetNumber = 4,
-                City = "Cluj-Napoca",
-                Country = "Romania"
-            };
-            context.Addresses.Add(address1);
-
-            var person1 = new Person
-            {
-                FirstName = "Matei",
-                LastName = "Serafim",
-                UserName = "mserafim",
-                Password = "1234",
-                Email = "mserafim@yahoo.com",
-                Phone = "0744012012"
-            };
-            context.Persons.Add(person1);
-
             context.Clients.Add(
                 new Client
                 {
-                    Age = 43,
-                    NationalId = "1881101234432",
-                    Address = address1
+                    FirstName = "Matei",
+                    LastName = "Serafim",
+                    UserName = "client",
+                    Password = "client",
+                    Email = "mserafim@yahoo.com",
+                    Phone = "0744012012",
+                    Age = 24,
+                    NationalId = "321132142132",
+                    Address = new Address
+                    {
+                        Street = "Mihai Viteazul",
+                        StreetNumber = 4,
+                        City = "Cluj-Napoca",
+                        Country = "Romania"
+                    }
                 });
-
-            var person2 = new Person
-            {
-                FirstName = "Sorin",
-                LastName = "Decebal",
-                UserName = "sdecebal",
-                Password = "1234",
-                Email = "sdecebal@yahoo.com",
-                Phone = "0743123123"
-            };
-            context.Persons.Add(person2);
-
-            context.Clients.Add(
-                new Client
-                {
-                    Age = 47,
-                    NationalId = "2841101342433",
-                    Address = address1
-                });
-
-            context.SaveChanges();
         }
 
     }

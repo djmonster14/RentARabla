@@ -188,6 +188,14 @@
     <Compile Include="Migrations\201611131658140_Modified_Client.Designer.cs">
       <DependentUpon>201611131658140_Modified_Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611141701189_Corrected_Seed.cs" />
+    <Compile Include="Migrations\201611141701189_Corrected_Seed.Designer.cs">
+      <DependentUpon>201611141701189_Corrected_Seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611141707082_Corrected_SeedAgain.cs" />
+    <Compile Include="Migrations\201611141707082_Corrected_SeedAgain.Designer.cs">
+      <DependentUpon>201611141707082_Corrected_SeedAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Address.cs" />
@@ -252,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611131658140_Modified_Client.resx">
       <DependentUpon>201611131658140_Modified_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611141701189_Corrected_Seed.resx">
+      <DependentUpon>201611141701189_Corrected_Seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611141707082_Corrected_SeedAgain.resx">
+      <DependentUpon>201611141707082_Corrected_SeedAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

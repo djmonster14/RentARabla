@@ -8,9 +8,6 @@ namespace RentARabla.Models
 {
     public class Administrator : Person
     {
-
         public Role Role { get; set; }
-
-        public virtual Person Person { get; set; }
     }
 }

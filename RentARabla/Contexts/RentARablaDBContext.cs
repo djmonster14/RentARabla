@@ -27,8 +27,8 @@ namespace RentARabla.Contexts
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<RentARabla.Models.Client> Clients { get; set; }
-        public System.Data.Entity.DbSet<RentARabla.Models.Administrator> Administrators { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
 
     }
 }
