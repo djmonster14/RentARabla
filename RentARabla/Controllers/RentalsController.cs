@@ -1,4 +1,5 @@
 ﻿using RentARabla.Contexts;
+using RentARabla.Enums;
 using RentARabla.Helpers;
 using RentARabla.Models;
 using System;
@@ -12,25 +13,26 @@ namespace RentARabla.Controllers
     public class RentalsController : Controller
     {
         private RentARablaDBContext db = new RentARablaDBContext();
+        private RentalsSearch _search = new RentalsSearch();
         // GET: Rentals
         public ActionResult Index()
         {
-            var result = (from rental in db.Rentals
-                          join car in db.Cars on rental.Car.Id equals car.Id
-                          where rental.RentDate <= DateTime.Now && rental.ReturnDate > DateTime.Now
-                          select new RentalsSearch
-                          {
-                              Id = rental.Id,
-                              RentDate = rental.RentDate,
-                              ReturnDate = rental.ReturnDate,
-                              PricePerDay = car.PricePerDay,
-                              ManufactureDate = car.ManufactureDate,
-                              FuelType = car.FuelType,
-                              Type = car.Type,
-                              Brand = car.Brand,
-                              Model = car.Model
-                          });
-            return View(result.ToList());
+            //var result = (from rental in db.Rentals
+            //              join car in db.Cars on rental.Car.Id equals car.Id
+            //              where rental.RentDate <= DateTime.Now && rental.ReturnDate > DateTime.Now
+            //              select new RentalsSearch
+            //              {
+            //                  Id = rental.Id,
+            //                  RentDate = rental.RentDate,
+            //                  ReturnDate = rental.ReturnDate,
+            //                  PricePerDay = car.PricePerDay,
+            //                  ManufactureDate = car.ManufactureDate,
+            //                  FuelType = car.FuelType,
+            //                  Type = car.Type,
+            //                  Brand = car.Brand,
+            //                  Model = car.Model
+            //              });
+            return View(_search);
         }
 
         // GET: Rentals/Details/5
@@ -151,6 +153,22 @@ namespace RentARabla.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult SelectType(string carType)
+        {
+            var results = new List<string>();
+            if(carType != String.Empty && carType != null)
+            {
+                results = GetModelsByType(carType);
+            }
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<string> GetModelsByType(string carType)
+        {
+            var carsByType = db.Types.Where(x => x.Value == carType);
+            return new List<string> {"1","2" };
         }
 
     }

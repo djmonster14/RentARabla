@@ -13,6 +13,11 @@ namespace RentARabla.Contexts
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarModel> Models { get; set; }
+        public DbSet<CarBrand> Brands { get; set; }
+        public DbSet<CarType> Types { get; set; }
+        public DbSet<l_CarTypeBrand> l_CarTypesBrands { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

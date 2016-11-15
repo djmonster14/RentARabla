@@ -44,56 +44,147 @@ namespace RentARabla.Migrations
             var car = context.Cars.FirstOrDefault();
             if (car != null)
                 return;
-            var price1 = new Price
-            {
-                Currency = Currency.EUR,
-                PriceValue = 35
-            };
-            var car1 = new Car
-            {
 
-                PricePerDay = price1,
-                ManufactureDate = Convert.ToDateTime("01/08/2016"),
+            var vw = new CarBrand { Value = "Volkswagen" };
+            var bmw = new CarBrand { Value = "BMW" };
+            var tesla = new CarBrand { Value = "Tesla" };
+            var dacia = new CarBrand { Value = "Dacia" };
+
+            var jeep = new CarType { Value = "Jeep" };
+            var luxury = new CarType { Value = "Luxury" };
+
+            context.Cars.Add(new Car
+            {
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 35
+                },
+                ManufactureDate = Convert.ToDateTime("01/08/2016").Date,
                 FuelType = FuelType.Diesel,
-                Type = CarType.Jeep,
-                Brand = CarBrand.Dacia,
-                Model = CarModel.Duster
-            };
-
-            var price2 = new Price
+                Type = jeep,
+                Brand = dacia,
+                Model = new CarModel
+                {
+                    Value = "Duster",
+                    CarBrandId = dacia
+                },
+            });
+            context.l_CarTypesBrands.Add(new l_CarTypeBrand
             {
-                Currency = Currency.EUR,
-                PriceValue = 40
-            };
-            var car2 = new Car
-            {
+                CarBrandId = dacia,
+                CarTypeId = jeep
+            });
 
-                PricePerDay = price2,
+            context.Cars.Add(new Car
+            {
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 40
+                },
                 ManufactureDate = Convert.ToDateTime("01/08/2010"),
                 FuelType = FuelType.Electric,
-                Type = CarType.Luxury,
-                Brand = CarBrand.Tesla,
-                Model = CarModel.Roadster
-            };
+                Type = luxury,
+                Brand = tesla,
+                Model = new CarModel
+                {
+                    Value = "S",
+                    CarBrandId = tesla
+                }
+            });
+            context.l_CarTypesBrands.Add(new l_CarTypeBrand
+            {
+                CarBrandId = tesla,
+                CarTypeId = luxury
+            });
 
-            var price3 = new Price
+            context.Cars.Add(new Car
             {
-                Currency = Currency.EUR,
-                PriceValue = 45
-            };
-            var car3 = new Car
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 120
+                },
+                ManufactureDate = Convert.ToDateTime("01/08/2014"),
+                FuelType = FuelType.Petrol,
+                Type = luxury,
+                Brand = bmw,
+                Model = new CarModel
+                {
+                    Value = "2 Series",
+                    CarBrandId = bmw
+                }
+            });
+            context.l_CarTypesBrands.Add(new l_CarTypeBrand
             {
-                PricePerDay = price3,
+                CarBrandId = bmw,
+                CarTypeId = luxury
+            });
+
+            context.Cars.Add(new Car
+            {
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 45
+                },
                 ManufactureDate = Convert.ToDateTime("05/08/2012"),
                 FuelType = FuelType.Petrol,
-                Type = CarType.Jeep,
-                Brand = CarBrand.Volkswagen,
-                Model = CarModel.Tuareg
-            };
+                Type = jeep,
+                Brand = vw,
+                Model = new CarModel
+                {
+                    Value = "Tuareg",
+                    CarBrandId = vw
+                }
+            });
+            context.l_CarTypesBrands.Add(new l_CarTypeBrand
+            {
+                CarBrandId = vw,
+                CarTypeId = jeep
+            });
 
-            context.Cars.Add(car1);
-            context.Cars.Add(car2);
-            context.Cars.Add(car3);
+            context.Cars.Add(new Car
+            {
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 55
+                },
+                ManufactureDate = Convert.ToDateTime("01/08/2004").Date,
+                FuelType = FuelType.Diesel,
+                Type = jeep,
+                Brand = bmw,
+                Model = new CarModel
+                {
+                    Value = "X6",
+                    CarBrandId = bmw
+                }
+            });
+            context.l_CarTypesBrands.Add(new l_CarTypeBrand
+            {
+                CarBrandId = bmw,
+                CarTypeId = jeep
+            });
+
+            context.Cars.Add(new Car
+            {
+                PricePerDay = new Price
+                {
+                    Currency = Currency.EUR,
+                    PriceValue = 43
+                },
+                ManufactureDate = Convert.ToDateTime("01/08/2006").Date,
+                FuelType = FuelType.Diesel,
+                Type = jeep,
+                Brand = vw,
+                Model = new CarModel
+                {
+                    Value = "Tiguan",
+                    CarBrandId = vw
+                }
+            });
         }
 
         private void SeedClients(Contexts.RentARablaDBContext context)
