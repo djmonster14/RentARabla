@@ -1,7 +1,3 @@
-function resetForm()
-{
-    document.forms[0].reset();
-}
 
 $(document).ready(function () {
     setupTypeSelection();

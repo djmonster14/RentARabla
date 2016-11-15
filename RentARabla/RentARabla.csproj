@@ -191,7 +191,7 @@
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
-    <Content Include="scripts\myJavaScript.js" />
+    <Content Include="scripts\Rentals.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -278,8 +278,8 @@
     <Content Include="Views\Clients\Create.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
-    <Content Include="Views\Rentals\Login.cshtml" />
-    <Content Include="Views\Rentals\Authenticate.cshtml" />
+    <Content Include="Views\Clients\Login.cshtml" />
+    <Content Include="Views\Clients\Authenticate.cshtml" />
     <Content Include="Views\Rentals\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

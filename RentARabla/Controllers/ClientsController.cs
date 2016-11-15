@@ -13,13 +13,12 @@ namespace RentARabla.Controllers
     public class ClientsController : Controller
     {
         private RentARablaDBContext db = new RentARablaDBContext();
-        // GET: Clients
+
         public ActionResult Index()
         {
             return View(db.Clients);
         }
 
-        // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -31,17 +30,15 @@ namespace RentARabla.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             return View();
         }
 
-        // GET: Clients/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Clients/Create
         [HttpPost]
         public ActionResult Create([Bind(Include = "FirstName,LastName,Email,Phone,UserName,Password,NationalId")] Client client)
         {
@@ -62,7 +59,6 @@ namespace RentARabla.Controllers
             }
         }
 
-        // GET: Clients/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,13 +73,12 @@ namespace RentARabla.Controllers
             return View(client);
         }
 
-        // POST: Clients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Phone,UserName,Password,NationalId")] Client client)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,7 +86,6 @@ namespace RentARabla.Controllers
             return View(client);
         }
 
-        // GET: Clients/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,7 +100,6 @@ namespace RentARabla.Controllers
             return View(client);
         }
 
-        // POST: Clients/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
@@ -115,6 +108,50 @@ namespace RentARabla.Controllers
             db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string userName, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
+                if (user.Count != 0)
+                {
+                    return RedirectToAction("Index", "Rentals");
+                }
+                else
+                    ModelState.AddModelError("", "Incorrect username or password");
+            }
+            return View();
+        }
+
+        public ActionResult Authenticate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Authenticate(Client model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Clients.Add(model);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index", "Rentals");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

@@ -107,53 +107,7 @@ namespace RentARabla.Controllers
             }
         }
 
-        // GET: Rentals/Login/6
-        public ActionResult Login()
-        {
-            return View();
-        }
 
-        //TODO: SET: Login()
-        [HttpPost]
-        public ActionResult Login(string userName, string password)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
-                if (user.Count != 0)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                    ModelState.AddModelError("", "Incorrect username or password");
-            }
-            return View();
-        }
-
-        // GET: Rentals/Authenticate/
-        public ActionResult Authenticate()
-        {
-            return View();
-        }
-
-        //TODO: SET: Authenticate()
-        [HttpPost]
-        public ActionResult Authenticate(Client model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Clients.Add(model);
-                    db.SaveChanges();
-                }
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         public ActionResult SelectType(string carType)
         {
