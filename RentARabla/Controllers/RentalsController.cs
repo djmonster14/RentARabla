@@ -129,6 +129,24 @@ namespace RentARabla.Controllers
 
             return db.Models.Select(x => x.CarBrand).ToList();
         }
-
+        public ActionResult Rental(int carId)
+        {
+            Car selectedcar = new Car();
+            selectedcar = db.Cars.Where(x => x.Id == carId).SingleOrDefault();
+            if (selectedcar != null)
+            {
+                selectedcar.IsRented = true;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    // Provide for exceptions.
+                }
+            }
+            return RedirectToAction("Index", "Rentals");
+        }
     }
 }
