@@ -131,7 +131,7 @@ namespace RentARabla.Controllers
                     {
                         ViewBag.IsAdmin = false;
                     }
-                    ViewBag.UserName = userName;
+                    this.TempData["UserName"] = userName;
                     return RedirectToAction("Index", "Rentals");
                 }
                 else
