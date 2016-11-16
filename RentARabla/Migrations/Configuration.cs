@@ -10,7 +10,7 @@ namespace RentARabla.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Contexts.RentARablaDBContext context)

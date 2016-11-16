@@ -3,8 +3,15 @@
 @model IList<Car>
 
 @{
-    foreach (var car in Model)
-    {
+
+if (ViewBag.IsAdmin)
+{
+    <div class="col-md-12">
+        <a href="@Url.Action("Create","Cars")">Add Car</a>
+    </div>
+}
+foreach (var car in Model)
+{
         <div class="row">
             <div class="col-md-12">
                 <h4>@car.Model.CarBrand.Value @car.Model.Value from @car.ManufactureDate</h4>

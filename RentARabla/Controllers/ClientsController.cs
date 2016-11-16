@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Runtime.InteropServices;
 
 namespace RentARabla.Controllers
 {
@@ -116,9 +117,9 @@ namespace RentARabla.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string userName, string password, int carId)
+        public ActionResult Login(string userName, string password, int? carId)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && carId != null)
             {
                 var user = db.Persons.Where(x => x.UserName == userName && x.Password == password).ToList();
                 if (user.Count != 0)
@@ -132,7 +133,26 @@ namespace RentARabla.Controllers
                         ViewBag.IsAdmin = false;
                     }
                     TempData["UserName"] = userName;
-                    return RedirectToAction("Rental", "Rentals", new { carId });
+                    return RedirectToAction("Rent", "Rentals", new { carId });
+                }
+                else
+                    ModelState.AddModelError("", "Incorrect username or password");
+            }
+            else if (ModelState.IsValid)
+            {
+                var user = db.Persons.Where(x => x.UserName == userName && x.Password == password).ToList();
+                if (user.Count != 0)
+                {
+                    if (userName == "admin" && password == "admin")
+                    {
+                        ViewBag.IsAdmin = true;
+                    }
+                    else
+                    {
+                        ViewBag.IsAdmin = false;
+                    }
+                    TempData["UserName"] = userName;
+                    return RedirectToAction("Index", "Cars");
                 }
                 else
                     ModelState.AddModelError("", "Incorrect username or password");

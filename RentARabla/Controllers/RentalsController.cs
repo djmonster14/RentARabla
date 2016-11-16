@@ -129,15 +129,25 @@ namespace RentARabla.Controllers
 
             return db.Models.Select(x => x.CarBrand).ToList();
         }
-        public ActionResult Rental(int carId)
+
+        [HttpGet]
+        public ActionResult Rent(int carId)
+        {   
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Rent([Bind(Include = "Id,RentDate,ReturnDate,Car_Id,Client_Id,Expired")] Rental rentcar, int carId)
         {
             Car selectedcar = new Car();
-            selectedcar = db.Cars.Where(x => x.Id == carId).SingleOrDefault();
-            if (selectedcar != null)
+            selectedcar = db.Cars.Where(x => x.Id == rentcar.Car.Id).SingleOrDefault();
+            if (selectedcar != null && ModelState.IsValid)
             {
                 selectedcar.IsRented = true;
+
                 try
                 {
+                    db.Rentals.Add(rentcar);
                     db.SaveChanges();
                 }
                 catch (Exception e)
