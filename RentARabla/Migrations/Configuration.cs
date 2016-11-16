@@ -60,14 +60,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 35
                 },
-                ManufactureDate = Convert.ToDateTime("01/08/2016").Date,
+                ManufactureDate = 2016,
                 FuelType = FuelType.Diesel,
                 Type = jeep,
-                Brand = dacia,
                 Model = new CarModel
                 {
                     Value = "Duster",
-                    CarBrandId = dacia
+                    CarBrand = dacia
                 },
             });
             context.l_CarTypesBrands.Add(new l_CarTypeBrand
@@ -83,14 +82,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 40
                 },
-                ManufactureDate = Convert.ToDateTime("01/08/2010"),
+                ManufactureDate = 2010,
                 FuelType = FuelType.Electric,
                 Type = luxury,
-                Brand = tesla,
                 Model = new CarModel
                 {
                     Value = "S",
-                    CarBrandId = tesla
+                    CarBrand = tesla
                 }
             });
             context.l_CarTypesBrands.Add(new l_CarTypeBrand
@@ -106,14 +104,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 120
                 },
-                ManufactureDate = Convert.ToDateTime("01/08/2014"),
+                ManufactureDate = 2014,
                 FuelType = FuelType.Petrol,
                 Type = luxury,
-                Brand = bmw,
                 Model = new CarModel
                 {
                     Value = "2 Series",
-                    CarBrandId = bmw
+                    CarBrand = bmw
                 }
             });
             context.l_CarTypesBrands.Add(new l_CarTypeBrand
@@ -129,14 +126,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 45
                 },
-                ManufactureDate = Convert.ToDateTime("05/08/2012"),
+                ManufactureDate = 2012,
                 FuelType = FuelType.Petrol,
                 Type = jeep,
-                Brand = vw,
                 Model = new CarModel
                 {
                     Value = "Tuareg",
-                    CarBrandId = vw
+                    CarBrand = vw
                 }
             });
             context.l_CarTypesBrands.Add(new l_CarTypeBrand
@@ -152,14 +148,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 55
                 },
-                ManufactureDate = Convert.ToDateTime("01/08/2004").Date,
+                ManufactureDate = 2004,
                 FuelType = FuelType.Diesel,
                 Type = jeep,
-                Brand = bmw,
                 Model = new CarModel
                 {
                     Value = "X6",
-                    CarBrandId = bmw
+                    CarBrand = bmw
                 }
             });
             context.l_CarTypesBrands.Add(new l_CarTypeBrand
@@ -175,14 +170,13 @@ namespace RentARabla.Migrations
                     Currency = Currency.EUR,
                     PriceValue = 43
                 },
-                ManufactureDate = Convert.ToDateTime("01/08/2006").Date,
+                ManufactureDate = 2006,
                 FuelType = FuelType.Diesel,
                 Type = jeep,
-                Brand = vw,
                 Model = new CarModel
                 {
                     Value = "Tiguan",
-                    CarBrandId = vw
+                    CarBrand = vw
                 }
             });
         }

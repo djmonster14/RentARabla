@@ -13,26 +13,20 @@ namespace RentARabla.Controllers
     public class RentalsController : Controller
     {
         private RentARablaDBContext db = new RentARablaDBContext();
-        private RentalsSearch _search = new RentalsSearch();
-        // GET: Rentals
+
+        
         public ActionResult Index()
         {
-            //var result = (from rental in db.Rentals
-            //              join car in db.Cars on rental.Car.Id equals car.Id
-            //              where rental.RentDate <= DateTime.Now && rental.ReturnDate > DateTime.Now
-            //              select new RentalsSearch
-            //              {
-            //                  Id = rental.Id,
-            //                  RentDate = rental.RentDate,
-            //                  ReturnDate = rental.ReturnDate,
-            //                  PricePerDay = car.PricePerDay,
-            //                  ManufactureDate = car.ManufactureDate,
-            //                  FuelType = car.FuelType,
-            //                  Type = car.Type,
-            //                  Brand = car.Brand,
-            //                  Model = car.Model
-            //              });
-            return View(_search);
+            ViewBag.IsAdmin = false;
+
+            var search = new RentalsSearch();
+
+            var cars = db.Cars.Where(x => x.IsRented == false).ToList();
+            search.Cars = cars;
+
+            search.CarTypeList = new SelectList(db.Types.ToList(), "Id", "Value");
+
+            return View(search);
         }
 
         // GET: Rentals/Details/5
@@ -109,20 +103,27 @@ namespace RentARabla.Controllers
 
 
 
-        public ActionResult SelectType(string carType)
+        public ActionResult SelectType(int carType)
         {
-            var results = new List<string>();
-            if(carType != String.Empty && carType != null)
+            var results = new List<CarBrand>();
+            if(carType != null && carType != 0)
             {
                 results = GetModelsByType(carType);
             }
             return Json(results, JsonRequestBehavior.AllowGet);
         }
 
-        private List<string> GetModelsByType(string carType)
+        private List<CarBrand> GetModelsByType(int carType)
         {
-            var carsByType = db.Types.Where(x => x.Value == carType);
-            return new List<string> {"1","2" };
+
+            var link = db.l_CarTypesBrands;
+            var brands = db.Models.Select(x => x.CarBrand);
+            var query = from b in brands
+                        join l in link on b.Id equals l.CarBrandId.Id
+                        where l.CarTypeId.Id == carType
+                        select new { BrandId = b.Id, BrandValue = b.Value };
+
+            return db.Models.Select(x => x.CarBrand).ToList();
         }
 
     }

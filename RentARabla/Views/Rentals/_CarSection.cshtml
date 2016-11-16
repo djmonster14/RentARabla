@@ -1,0 +1,29 @@
+﻿@using RentARabla.Models
+
+@model IList<Car>
+
+@{
+    foreach (var car in Model)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h4>@car.Model.CarBrand.Value @car.Model.Value from @car.ManufactureDate</h4>
+                <p>Fuel type: @car.FuelType.ToString()</p>
+                <p>Price per day: @car.PricePerDay.PriceValue @car.PricePerDay.Currency</p>
+                <p>Car type: @car.Type.Value</p>
+
+                @if (ViewBag.IsAdmin)
+                {
+                    <a href="@Url.Action("Edit","Rentals",new { carId = car.Id })">Edit</a>
+                    <a href="@Url.Action("Delete","Rentals",new { carId = car.Id })">Delete</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Authenticate","Clients",new { carId = car.Id})">Rent</a>
+                }
+                <br />
+
+            </div>
+        </div>
+    }
+}

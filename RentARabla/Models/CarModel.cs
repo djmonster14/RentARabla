@@ -9,6 +9,7 @@ namespace RentARabla.Models
     {
         public int Id { get; set; }
         public string Value { get; set; }
-        public virtual CarBrand CarBrandId { get; set; }
+        public virtual CarBrand CarBrand { get; set; }
+        public virtual IList<Car> Cars { get; set; }
     }
 }

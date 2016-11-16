@@ -2,6 +2,7 @@
 {
     public enum FuelType
     {
+        Any,
         Diesel,
         Petrol,
         Gas,

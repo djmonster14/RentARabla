@@ -10,9 +10,7 @@ namespace RentARabla.Models
         public int Id { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime ReturnDate { get; set; }
-
-        public virtual Address StartLocation { get; set; }
-        public virtual Address StopLocation { get; set; }
+        public bool Expired { get; set; }
         public virtual Client Client { get; set; }
         public virtual Car Car { get; set; }
     }
