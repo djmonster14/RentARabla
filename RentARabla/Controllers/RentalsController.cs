@@ -17,7 +17,8 @@ namespace RentARabla.Controllers
         
         public ActionResult Index()
         {
-            ViewBag.IsAdmin = false;
+            if(ViewBag.UserName == null)
+                ViewBag.IsAdmin = false;
 
             var search = new RentalsSearch();
 

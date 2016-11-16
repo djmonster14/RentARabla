@@ -116,13 +116,22 @@ namespace RentARabla.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string userName, string password)
+        public ActionResult Login(string userName, string password, int carId)
         {
             if (ModelState.IsValid)
             {
-                var user = db.Administrators.Where(x => x.UserName == userName && x.Password == password).ToList();
+                var user = db.Persons.Where(x => x.UserName == userName && x.Password == password).ToList();
                 if (user.Count != 0)
                 {
+                    if (userName == "admin" && password == "admin")
+                    {
+                        ViewBag.IsAdmin = true;
+                    }
+                    else
+                    {
+                        ViewBag.IsAdmin = false;
+                    }
+                    ViewBag.UserName = userName;
                     return RedirectToAction("Index", "Rentals");
                 }
                 else
