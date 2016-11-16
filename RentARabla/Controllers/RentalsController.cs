@@ -139,11 +139,12 @@ namespace RentARabla.Controllers
         [HttpPost]
         public ActionResult Rent([Bind(Include = "Id,RentDate,ReturnDate,Car_Id,Client_Id,Expired")] Rental rentcar, int carId)
         {
-            Car selectedcar = new Car();
-            selectedcar = db.Cars.Where(x => x.Id == rentcar.Car.Id).SingleOrDefault();
-            if (selectedcar != null && ModelState.IsValid)
+            rentcar.Car = db.Cars.Where(x => x.Id == carId).SingleOrDefault();
+            var uname = TempData["UserName"].ToString();
+            rentcar.Client = db.Clients.Where(c => c.UserName == uname).SingleOrDefault();
+            if (rentcar.Car != null && ModelState.IsValid)
             {
-                selectedcar.IsRented = true;
+                rentcar.Car.IsRented = true;
 
                 try
                 {

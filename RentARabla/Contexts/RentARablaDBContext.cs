@@ -35,6 +35,6 @@ namespace RentARabla.Contexts
         public DbSet<Client> Clients { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
 
-        public System.Data.Entity.DbSet<RentARabla.Helpers.RentalsSearch> RentalsSearches { get; set; }
+        
     }
 }
