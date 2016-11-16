@@ -17,11 +17,12 @@ namespace RentARabla.Controllers
         
         public ActionResult Index()
         {
-            if (TempData["UserName"] == null)
-                ViewBag.IsAdmin = false;
-            else if ((string) TempData["UserName"] == "admin" )
+            var admin = TempData["UserName"];
+            if (String.Equals(admin, "admin"))
                 ViewBag.IsAdmin = true;
-            else ViewBag.IsAdmin = false;
+            else
+                ViewBag.IsAdmin = false;
+
             var search = new RentalsSearch();
 
             var cars = db.Cars.Where(x => x.IsRented == false).ToList();
@@ -127,23 +128,6 @@ namespace RentARabla.Controllers
                         select new { BrandId = b.Id, BrandValue = b.Value };
 
             return db.Models.Select(x => x.CarBrand).ToList();
-        }
-
-        public ActionResult Rental(int carId) {
-            Car selectedcar = new Car();
-            selectedcar = db.Cars.Where(x => x.Id == carId).SingleOrDefault();
-            if(selectedcar != null){
-                selectedcar.IsRented = true;
-                try {
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    // Provide for exceptions.
-                }
-            }
-            return RedirectToAction("Index", "Rentals");
         }
 
     }
