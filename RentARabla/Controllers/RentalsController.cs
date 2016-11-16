@@ -17,10 +17,11 @@ namespace RentARabla.Controllers
         
         public ActionResult Index()
         {
-            if (this.TempData["UserName"] == null)
-                ViewBag.IsAdmin = false;
-            else
+            var admin = TempData["UserName"];
+            if (String.Equals(admin, "admin"))
                 ViewBag.IsAdmin = true;
+            else
+                ViewBag.IsAdmin = false;
 
             var search = new RentalsSearch();
 
