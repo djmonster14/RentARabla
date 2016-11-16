@@ -131,8 +131,8 @@ namespace RentARabla.Controllers
                     {
                         ViewBag.IsAdmin = false;
                     }
-                    this.TempData["UserName"] = userName;
-                    return RedirectToAction("Index", "Rentals");
+                    TempData["UserName"] = userName;
+                    return RedirectToAction("Rental", "Rentals", new { carId });
                 }
                 else
                     ModelState.AddModelError("", "Incorrect username or password");

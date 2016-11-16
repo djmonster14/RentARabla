@@ -4,7 +4,7 @@
 <script src="~/scripts/Rentals.js"></script>
 <h2>Index</h2>
 
-<div class="form-horizontal">
+<div align ="left" class="form-horizontal" style= "width: 40%; margin:0px">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
@@ -28,11 +28,13 @@
             @Html.ValidationMessageFor(model => model.CarModel, "", new { @class = "text-danger" })
         </div>
     </div>
-    
+</div>
+<div>
+    @Html.Partial("_CarSection", Model.Cars)
 </div>
 
 
-@Html.Partial("_CarSection", Model.Cars)
+
 
 
 
