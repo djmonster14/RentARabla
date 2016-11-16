@@ -17,7 +17,7 @@ namespace RentARabla.Controllers
         
         public ActionResult Index()
         {
-            var admin = TempData["UserName"];
+            var admin = this.TempData["UserName"];
             if (String.Equals(admin, "admin"))
                 ViewBag.IsAdmin = true;
             else

@@ -119,7 +119,7 @@ namespace RentARabla.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password, int? carId)
         {
-            if (ModelState.IsValid && carId != null)
+            if (ModelState.IsValid)
             {
                 var user = db.Persons.Where(x => x.UserName == userName && x.Password == password).ToList();
                 if (user.Count != 0)
@@ -127,36 +127,22 @@ namespace RentARabla.Controllers
                     if (userName == "admin" && password == "admin")
                     {
                         ViewBag.IsAdmin = true;
+                        this.TempData["UserName"] = userName;
+
+                        return RedirectToAction("Index", "Rentals");
                     }
                     else
                     {
                         ViewBag.IsAdmin = false;
+                        this.TempData["UserName"] = userName;
+
+                        return RedirectToAction("Rent", "Rentals", new { carId });
                     }
-                    TempData["UserName"] = userName;
-                    return RedirectToAction("Rent", "Rentals", new { carId });
                 }
                 else
                     ModelState.AddModelError("", "Incorrect username or password");
             }
-            else if (ModelState.IsValid)
-            {
-                var user = db.Persons.Where(x => x.UserName == userName && x.Password == password).ToList();
-                if (user.Count != 0)
-                {
-                    if (userName == "admin" && password == "admin")
-                    {
-                        ViewBag.IsAdmin = true;
-                    }
-                    else
-                    {
-                        ViewBag.IsAdmin = false;
-                    }
-                    TempData["UserName"] = userName;
-                    return RedirectToAction("Index", "Cars");
-                }
-                else
-                    ModelState.AddModelError("", "Incorrect username or password");
-            }
+           
             return View();
         }
 
