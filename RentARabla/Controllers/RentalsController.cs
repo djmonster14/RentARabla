@@ -29,6 +29,7 @@ namespace RentARabla.Controllers
             search.Cars = cars;
 
             search.CarTypeList = new SelectList(db.Types.ToList(), "Id", "Value");
+            
 
             return View(search);
         }
@@ -107,12 +108,12 @@ namespace RentARabla.Controllers
 
 
 
-        public ActionResult SelectType(int carType)
+        public ActionResult SelectType(int? carType)
         {
             var results = new List<CarBrand>();
             if(carType != null && carType != 0)
             {
-                results = GetModelsByType(carType);
+                results = GetModelsByType((int)carType);
             }
             return Json(results, JsonRequestBehavior.AllowGet);
         }

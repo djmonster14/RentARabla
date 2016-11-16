@@ -576,6 +576,7 @@
     <Content Include="Views\Rentals\Index.cshtml" />
     <Content Include="Views\Rentals\_CarSection.cshtml" />
     <Content Include="Views\Rentals\Rent.cshtml" />
+    <Content Include="Views\Cars\Edit1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
